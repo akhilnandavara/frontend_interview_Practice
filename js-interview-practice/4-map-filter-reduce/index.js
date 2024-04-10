@@ -28,67 +28,111 @@ const sum = nums3.reduce((acc, curr, i, arr) => {
 
 console.log(sum); // 10
 
-// Question 4 : polyfils for map, filter and reduce
 
-const nums5 = [1, 2, 3, 4];
-const sqr=(num,i,arr)=>num*num;
-const cube=(num)=>num*num*num;
-const greaterthanTwo=(num)=>num > 2;
-const sumFunc=(acc,curr)=>acc+curr;
-const multiply=(acc,curr)=>acc*curr;
 
-Array.prototype.Map=function(logic){
-  const result=[];
-  for(let i=0;i<this.length;i++){
-    result.push(logic(this[i],i,this))
+// Question 4 : Map Polyfill
+
+Array.prototype.myMap = function (cb) {
+  let result = [];
+  for (let i = 0; i < this.length; i++) {
+    result.push(cb(this[i], i, this));
   }
+
   return result;
-}
+};
 
-Array.prototype.Filter=function(logic){
-  const result=[];
-  for(let i=0;i<this.length;i++){
-    logic(this[i]) && result.push(this[i])
+
+
+// Ques 5 : Filter Polyfill
+
+Array.prototype.myFilter = function (cb) {
+  let result = [];
+  for (let i = 0; i < this.length; i++) {
+    if (cb(this[i], i, this)) result.push(this[i]);
   }
+
   return result;
-}
+};
 
-Array.prototype.Reduce=function(logic,acc){
-  for(let i=0;i<this.length;i++){
-    acc=logic(acc,this[i])
+
+
+// Question 6 : Reduce Polyfill
+
+Array.prototype.myReduce = function (cb, initialValue) {
+  var accumulator = initialValue;
+
+  for (let i = 0; i < this.length; i++) {
+    accumulator = accumulator ? cb(accumulator, this[i], i, this) : this[i];
   }
-  return acc;
+
+  return accumulator;
+};
+
+
+
+// Question 7 : map vs foreach
+
+let students = [
+  { name: "Piyush", rollNumber: 31, marks: 80 },
+  { name: "Jenny", rollNumber: 15, marks: 69 },
+  { name: "Kaushal", rollNumber: 16, marks: 35 },
+  { name: "Dilpreet", rollNumber: 7, marks: 55 },
+];
+
+// Q1 - Return only the names of students in capital
+
+// Solution 1 : Traditional for() loop
+let namesArr1 = [];
+for (let index = 0; index < students.length; index++){
+  namesArr1.push(students[index].name.toUpperCase());
 }
 
-console.log(nums5.Map(sqr));
-console.log(nums5.Map(cube));
-console.log(nums5.Filter(greaterthanTwo));
-console.log(nums5.Reduce(multiply,1));
+console.log(namesArr1);
+
+// Solution 2 : forEach()
+let namesArr2 = []
+students.forEach( student => {
+     namesArr2.push(student.name.toUpperCase());
+})
+
+console.log(namesArr2);
+
+// Solution 3 : map() 
+let namesArr3 = students.map( stu => stu.name.toUpperCase());
+console.log(namesArr3);
 
 
+// Q2 - we want to get the details of students who scored more than 60 marks.
 
-// question 2- filter the users whose age is less than 30 and show their first name
-
-const user=[
-  {firstName:"John",lastName:"Doe",age:30},
-  {firstName:"Akhil",lastName:"N",age:26},
-  {firstName:"Bavu",lastName:"bam",age:14},
-  {firstName:"hari",lastName:"goyal",age:66},
-  {firstName:"tom",lastName:"c",age:37},
-]
-
-// approach 1
-const output1= user.filter((user)=>user.age<30).map((user)=>user.firstName)
-console.log(output1);
-
-// approach 2
-const output2=user.reduce((acc,curr)=>{
-  if(curr.age<30){
-      acc.push(curr.firstName)
-    }
-    return acc;
-    },[])
-
-console.log(output2);
+let namesArr4 = students.filter(stu => stu.marks > 60);
+console.log(namesArr4);
 
 
+// Q3 - Get the details of students who scored more than 60 marks and have rollNumber greater than 15.
+
+let namesArr5 = students.filter(stu => stu.marks > 60 && stu.rollNumber > 20)
+console.log(namesArr5);
+
+
+// Q4 - Sum total of the marks of the students
+
+let totalMarks1 = students.reduce( ((acc,emp) => acc+emp.marks), 0)
+console.log(totalMarks1);
+
+
+// Q5 - Get only the names of the students who scored more than 60 marks
+
+let names = students.filter(stu => stu.marks > 50).map(stu => stu.name)
+console.log(names);
+
+
+// Q6 -print the total marks of the students with marks greater than 60 after 20 marks has been added to those students who scored less than 60.
+
+let totalMarks = students.map(stu=>{
+  if(stu.marks<60){
+    stu.marks+=20
+  }
+  return stu
+}).filter((stu)=>stu.marks>60).reduce((acc,stu)=>acc+stu.marks,0)
+
+console.log("totalMarks",totalMarks);
