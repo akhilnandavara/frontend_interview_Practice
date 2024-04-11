@@ -59,20 +59,20 @@ console.log(add(5)(2)(4)(8)())
 
 // Question 6 : currying vs partial application
 
-function sum(a) {
+function sum1(a) {
     return (b, c) => {
         return a * b * c
     }
 }
 
-let x = sum(10);
+let x = sum1(10);
 x(3,12);
 x(20,12);
 x(20,13);
 // OR
-sum(10)(3,12);
-sum(10)(20,12);
-sum(10)(20,13);
+sum1(10)(3,12);
+sum1(10)(20,12);
+sum1(10)(20,13);
 
 
 
@@ -84,19 +84,12 @@ const updateHeaderText = updateElemText('header');
 updateHeaderText('Manipulated Dom!');
 
 
-// question 8 : currying - bind
+// question 8 : partial aplication using  bind
  const multiply=(a,b)=>a*b;
 
  const curriedMultiply=multiply.bind(this,2);
  console.log(curriedMultiply(4))
 
-function sum(a){
-    return function(b){
-        return function(c){
-            return a+b+c;
-        }
-    }
-}
 
 
 // Question 9 : converting normal function to curried function sum(a,b,c) => sum(a)(b)(c
@@ -106,8 +99,9 @@ const curry = (fn) => {
         if (args.length >= fn.length) {
             return fn(...args)
         }
+        
         return function (...next) {
-            return curriedSum(...args, ...next);
+            return curriedSum(...args, ...next); //concatenating the arguments and passed to the function
         };
     }
 }
@@ -115,4 +109,4 @@ const curry = (fn) => {
 const sumFunc = (a, b, c) => a + b + c;
 
 const courriedSum = curry(sumFunc);
-console.log(courriedSum(1)(2)(3))
+console.log(courriedSum(1)(2))
