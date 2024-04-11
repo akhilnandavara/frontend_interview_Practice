@@ -1,6 +1,7 @@
 (Notes) Currying
 Question 1: Currying
 Explanation: Currying is a technique in functional programming where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument. This improves composability and allows partial application of functions.
+Currying is the process of converting a function with multiple arguments into a sequence of functions, each taking a single argument. The curried function returns a new function for each argument, until all arguments have been supplied, at which point it returns the result.
 
 Question 2: sum(2)(6)(1)
 Explanation: This function demonstrates currying by taking three separate arguments and adding them together in a sequence using nested functions.
