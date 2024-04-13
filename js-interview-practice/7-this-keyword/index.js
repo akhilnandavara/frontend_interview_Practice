@@ -3,7 +3,7 @@
 // Question 1 : this keyword
 
 let a = 5
-// console.log(this.a);
+console.log(this.a);
 
 
 // Question 2 : this inside Method
@@ -16,7 +16,7 @@ let userZero = {
       }
 };
   
-// userZero.getDetails(); 
+userZero.getDetails(); 
 
 
 // Question 3 : nested object 
@@ -32,7 +32,7 @@ let userOne = {
       }
 };
   
-// userOne.childObj.getDetails(); 
+userOne.childObj.getDetails(); 
 
 
 // Question 4 : Class & Constructor
@@ -60,7 +60,7 @@ const userTwo = {
     }
 };
 
-// console.log(userTwo.getName());
+console.log(userTwo.getName());
 
 
 // Question 6 : What is the result of accessing its `ref`? Why?
@@ -74,7 +74,7 @@ function makeUser() {
   
 let userThree = makeUser();
   
-// alert( userThree.ref.name ); // What's the result?
+alert( userThree.ref.name ); // What's the result?
 
 
 // Question 7 : What logs to console the following code snippet:
@@ -99,8 +99,8 @@ const userFive = {
       return `Goodbye, ${this.name}!`;
     }
 };
-// console.log(userFive.greet());    
-// console.log(userFive.farewell()); 
+console.log(userFive.greet());    
+console.log(userFive.farewell()); 
 
 
 // Question 9 :
@@ -121,8 +121,8 @@ let calculator = {
 };
   
 // calculator.read();
-// alert( calculator.sum() );
-// alert( calculator.mul() );
+alert( calculator.sum() );
+alert( calculator.mul() );
 
 
 // Question 10 : Output
@@ -137,7 +137,7 @@ const object = {
     callback();
   }
 };
-// object.method(callback, 1, 2);
+object.method(callback, 1, 2);
 
 
 // Question 11 : Implement this Code
