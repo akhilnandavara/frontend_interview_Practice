@@ -7,7 +7,7 @@ function sayHello(){
     return "Hello " + this.name;
 }
           
-var obj = {name: "Piyush"};        
+var obj = {name: "Akhil"};        
 sayHello.call(obj);
 
 
@@ -17,8 +17,8 @@ function sayHelloOne(day){
     return "Hello " + this.name + " today is " + day ;
 }
           
-var obj = {name: "Piyush"};        
-console.log( sayHelloOne.apply(obj, ['Monday']))
+var obj = {name: "Akhil"};        
+// console.log( sayHelloOne.apply(obj, ['Monday']))
 
 
 // Question 3 : What is Bind?
@@ -27,14 +27,14 @@ function sayHello(){
     return "Hello " + this.name;
 }
           
-var obj = {name: "Piyush"};          
+var obj = {name: "Akhil"};          
 const helloFn = sayHello.bind(obj);
 // console.log(helloFn())
 
 
 // Question 4 : Output
 
-const personOne = { name: 'Piyush' };
+const personOne = { name: 'Akhil' };
 
 function sayHi(age) {
   return `${this.name} is ${age}`;
@@ -48,7 +48,7 @@ function sayHi(age) {
 
 const age = 10;
 var person = {
-	name: "Piyush",
+	name: "Akhil",
   age: 20,
   getAge: function(){
     return this.age;
@@ -72,8 +72,8 @@ setTimeout(() => {
     },
   };
 
-  console.log(data.getStatus());
-  console.log(data.getStatus.call(this));  // this inside arrow function is window or parent normal function
+//   console.log(data.getStatus());
+//   console.log(data.getStatus.call(this));  // this inside arrow function is window or parent normal function
 }, 0);
 
 
@@ -86,7 +86,6 @@ const animals = [
   
 function printAnimals(i) {
      this.print=function () {
-        console.log(this)
         console.log('#' + i + ' ' + this.species
                     + ': ' + this.name);
       }
@@ -97,3 +96,88 @@ for (let i = 0; i < animals.length; i++) {
     printAnimals.call(animals[i], i); 
 }
 
+
+// Question 8 : apply to append an array to another
+const array=["a","b","c"];
+const num=[1,2,3];
+
+// array.push(...num); //method 1
+array.push.apply(array,num); //method 2
+console.log(array)
+
+
+// Question 9 - Using apply to enhane built-in functions
+
+// Find min/max number in an array
+const numbers = [5, 6, 2, 3, 7]
+console.log(Math.max.apply(null,numbers))
+
+// Question 11 : Bind Chaining?
+
+function f() {
+    alert(this.name);
+  }
+  
+f = f.bind( {name: "John"} ).bind( {name: "Ann" } );
+  
+// f();
+
+
+// Question 12 : Fix the code
+
+function checkPassword(success, failed) {
+    let password = prompt("Password?", '');
+    if (password == "xyz") success();
+    else failed();
+}
+
+let user = {
+    name: 'Akhil',
+
+    loginSuccessful() {
+      console.log(`${this.name} logged in`);
+    },
+  
+    loginFailed() {
+      console.log(`${this.name} failed to log in`);
+    },
+  
+};
+  
+// checkPassword(user.loginSuccessful.bind(user), user.loginFailed.bind(user));
+
+// Question 13 : Partial application for login
+
+function askPassword(ok, fail) {
+    let password = prompt("Password?", '');
+    if (password == "xyz"||"XYZ") ok();
+    else fail();
+}
+  
+let userDetails = {
+    name: 'Akhil',
+  
+    login(result) {
+      console.log(this.name + (result ? ' login successful' : ' login failed') );
+    }
+};
+  
+// askPassword(userDetails.login.bind(userDetails,true),userDetails.login.bind(userDetails,false))
+
+// Question 14 :  Explicit Binding with Arrow Function
+
+const ageTwo = 10;
+// console.log(this.ageTwo);
+
+var person = {
+	name: "Akhil",
+  ageTwo: 20,
+  getAgeArrow: () => console.log(this.ageTwo),
+  getAge: function() {
+    console.log(this.ageTwo);
+  }
+}
+
+var person2 = {ageTwo:  24};
+person.getAgeArrow.call(person2);  // undefined
+person.getAge.call(person2);// 24
