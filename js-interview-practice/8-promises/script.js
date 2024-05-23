@@ -7,29 +7,29 @@ const cart = ["apple", "orange", "banana"];
 // showOrderSummery()
 // updateWallet()
 const createOrder = (cart, callback) => {
-    return new Promise(function (resolve, reject) {
-        if (!cart.length) reject("Cart is empty")
-        else setTimeout(() => {
-            console.log("Order Created")
-            resolve(123)
-            // reject("Order creation failed")
-        }, 2000)
-    })
+  return new Promise(function (resolve, reject) {
+    if (!cart.length) reject("Cart is empty")
+    else setTimeout(() => {
+      console.log("Order Created")
+      resolve(123)
+      // reject("Order creation failed")
+    }, 2000)
+  })
 }
 
 const proceedPayment = (orderId) => {
-    return new Promise(function (resolve, reject) {
-        if (!orderId) reject("Order Id is missing")
+  return new Promise(function (resolve, reject) {
+    if (!orderId) reject("Order Id is missing")
 
-        else resolve("Payment Success")
-    })
+    else resolve("Payment Success")
+  })
 }
 const updatedWallet = (paymentInfo) => {
-    return new Promise(function (resolve, reject) {
-        if (!paymentInfo) reject("payment Info is missing")
+  return new Promise(function (resolve, reject) {
+    if (!paymentInfo) reject("payment Info is missing")
 
-        else resolve("Wallet Updated")
-    })
+    else resolve("Wallet Updated")
+  })
 }
 
 // createOrder(cart,function(orderId){
@@ -57,10 +57,10 @@ const updatedWallet = (paymentInfo) => {
 //         console.log(err)
 //     })
 
-async function getUser(){
-    const user =await fetch("https://api.github.com/users/akhilnandavara")
-    const data = await user.json()
-    console.log(data)
+async function getUser() {
+  const user = await fetch("https://api.github.com/users/akhilnandavara")
+  const data = await user.json()
+  console.log(data)
 
 }
 
@@ -74,15 +74,16 @@ getUser()
 
 //Synchronous code
 console.log("start")
-console.log("Subscribe to Roadside Coder")
+console.log("Akhil Coding")
 console.log("stop")
 
 // Asynchronous code with setTimeout
 console.log("start")
 
 setTimeout(() => {
-  console.log("Subscribe to Roadside Coder");
-}, 2000); 
+  console.log("Akhil Coding")
+
+}, 2000);
 
 console.log("stop");
 
@@ -90,13 +91,14 @@ console.log("stop");
 console.log("start")
 
 function importantAction(username) {
-    setTimeout(() => {
-      return `Subscribe to ${username}`;
-    }, 1000);
-  }
+  setTimeout(() => {
+    return `Hello to ${username}`;
+  }, 1000);
+}
 
-const message = importantAction('Roadside Coder');
-console.log(message);
+const message1 = importantAction('Akhil');
+console.log(
+  message1);
 
 console.log("stop");
 
@@ -107,11 +109,11 @@ console.log("start")
 
 function importantAction(username, cb) {
   setTimeout(() => {
-    cb( `Subscribe to ${username}`);
+    cb(`Hello  ${username}`);
   }, 1000);
 }
 
-importantAction("Roadside Coder", (message) => {
+importantAction("Akhil", (message) => {
   console.log(message);
 });
 
@@ -123,31 +125,31 @@ console.log("start")
 
 function importantAction(username, cb) {
   setTimeout(() => {
-    cb(`Subscribe to ${username}`);
+    cb(`Hello to ${username}`);
   }, 1000);
 }
 
 function likeTheVideo(video, cb) {
   setTimeout(() => {
-    cb(`Like the ${video} video`);
+    cb(`clone the ${video} `);
   }, 1000);
 }
 
 function shareTheVideo(video, cb) {
   setTimeout(() => {
-    cb(`Share the ${video} video`);
+    cb(`Share the ${video}`);
   }, 1000);
 }
 
-const message = importantAction("Roadside Coder", (message) => {
+const message = importantAction("Akhil ", (message) => {
   console.log(message);
   likeTheVideo("Javascript Interview Questions", (action) => {
     console.log(action);
     shareTheVideo("Javascript Interview Questions", (action) => {
-        console.log(action);
-      });
+      console.log(action);
+    });
   });
-}); 
+});
 
 console.log("stop")
 
@@ -159,8 +161,8 @@ console.log("start");
 const sub = new Promise((resolve, reject) => {
   setTimeout(() => {
     const result = true;
-    if (result) resolve("Subscribed to Roadside Coder");
-    else reject(new Error("Why aren't you subscribed to Roadside Coder?"));
+    if (result) resolve("Akhil");
+    else reject(new Error("Why aren't you  cloned git hub"));
   }, 2000);
 });
 
@@ -170,7 +172,7 @@ sub
   })
   .catch((err) => {
     console.log(err);
-});
+  });
 
 console.log("stop");
 
@@ -182,7 +184,7 @@ console.log("start");
 function importantAction(username) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(`Subscribe to ${username}`);
+      resolve(`Hello to ${username}`);
     }, 1000);
   });
 }
@@ -190,7 +192,7 @@ function importantAction(username) {
 function likeTheVideo(video) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(`Like the ${video} video`);
+      resolve(`Like the ${video} `);
     }, 1000);
   });
 }
@@ -198,12 +200,12 @@ function likeTheVideo(video) {
 function shareTheVideo(video) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(`Share the ${video} video`);
+      resolve(`Share the ${video} `);
     }, 1000);
   });
 }
 
-importantAction("Roadside Coder").then((res) => {
+importantAction("AKhil").then((res) => {
   console.log(res);
   likeTheVideo("Javascript Interview Questions").then((res) => {
     console.log(res);
@@ -211,21 +213,21 @@ importantAction("Roadside Coder").then((res) => {
       console.log(res);
     });
   });
-}).catch(err=>console.log(err))
+}).catch(err => console.log(err))
 
 console.log("stop");
 
 
 // Promise Chaining
 
-importantAction("Roadside Coder").then((res) => {
-    console.log(res);
-    return likeTheVideo("Javascript Interview Questions")
-  }).then((res) => {
-      console.log(res);
-      return shareTheVideo("Javascript Interview Questions")
-    }).then((res) => {
-        console.log(res);
+importantAction("AKhil ").then((res) => {
+  console.log(res);
+  return likeTheVideo("Javascript Interview Questions")
+}).then((res) => {
+  console.log(res);
+  return shareTheVideo("Javascript Interview Questions")
+}).then((res) => {
+  console.log(res);
 });
 
 
@@ -235,12 +237,12 @@ importantAction("Roadside Coder").then((res) => {
 console.log("start")
 
 Promise.all([
-  importantAction("Roadside Coder"),
+  importantAction("AKhil"),
   likeTheVideo("Javascript Interview Questions"),
   shareTheVideo("Javascript Interview Questions")
-]).then((res)=>{
+]).then((res) => {
   console.log(res)
-}).catch(err=>{
+}).catch(err => {
   console.log(err)
 })
 
@@ -251,12 +253,12 @@ console.log("stop")
 console.log("start")
 
 Promise.race([
-  importantAction("Roadside Coder"),
+  importantAction("Akhil "),
   likeTheVideo("Javascript Interview Questions"),
   shareTheVideo("Javascript Interview Questions")
-]).then((res)=>{
+]).then((res) => {
   console.log(res)
-}).catch(err=>{
+}).catch(err => {
   console.log(err)
 })
 
@@ -267,12 +269,12 @@ console.log("stop")
 console.log("start")
 
 Promise.allSettled([
-  importantAction("Roadside Coder"),
+  importantAction("AKhil "),
   likeTheVideo("Javascript Interview Questions"),
   shareTheVideo("Javascript Interview Questions")
-]).then((res)=>{
+]).then((res) => {
   console.log(res)
-}).catch(err=>{
+}).catch(err => {
   console.log(err)
 })
 
@@ -283,12 +285,12 @@ console.log("stop")
 console.log("start")
 
 Promise.any([
-  importantAction("Roadside Coder"),
+  importantAction("AKhil"),
   likeTheVideo("Javascript Interview Questions"),
   shareTheVideo("Javascript Interview Questions")
-]).then((res)=>{
+]).then((res) => {
   console.log(res)
-}).catch(err=>{
+}).catch(err => {
   console.log(err)
 })
 
@@ -298,17 +300,17 @@ console.log("stop");
 // async & await
 
 const result = async () => {
-    try {
-        const message1 = await importantAction("Roadside Coder");
-        const message2 = await likeTheVideo("Javascript Interview Questions");
-        const message3 = await shareTheVideo("Javascript Interview Questions");
-    
-            console.log({message1, message2, message3});
-      } catch (err) {
-        console.log(err);
-      }
+  try {
+    const message1 = await importantAction("Akhil");
+    const message2 = await likeTheVideo("Javascript Interview Questions");
+    const message3 = await shareTheVideo("Javascript Interview Questions");
+
+    console.log({ message1, message2, message3 });
+  } catch (err) {
+    console.log(err);
+  }
 };
-  
+
 result();
 
 
@@ -335,13 +337,13 @@ console.log('end');
 
 console.log('start');
 
-const promise1 = new Promise((resolve, reject) => {
+const promise2 = new Promise((resolve, reject) => {
   console.log(1)
   resolve(2)
   console.log(3)
 })
 
-promise1.then(res => {
+promise2.then(res => {
   console.log(res)
 })
 
@@ -369,322 +371,349 @@ console.log('end')
 // Question 4 : What is Output?
 
 function job() {
-    return new Promise(function(resolve, reject) {
-        reject();
-    });
+  return new Promise(function (resolve, reject) {
+    reject();
+  });
 }
 
-let promise = job();
+let promise3 = job();
 
-promise
+promise3
 
-.then(function() {
+  .then(function () {
     console.log('Success 1');
-})
+  })
 
-.then(function() {
+  .then(function () {
     console.log('Success 2');
-})
+  })
 
-.then(function() {
+  .then(function () {
     console.log('Success 3');
-})
+  })
 
-.catch(function() {
+  .catch(function () {
     console.log('Error 1');
-})
+  })
 
-.then(function() {
+  .then(function () {
     console.log('Success 4');
-});
+  });
 
 
 // Question 5 : What is Output?
 
 function job(state) {
-    return new Promise(function(resolve, reject) {
-        if (state) {
-            resolve('success');
-        } else {
-            reject('error');
-        }
-    });
+  return new Promise(function (resolve, reject) {
+    if (state) {
+      resolve('success');
+    } else {
+      reject('error');
+    }
+  });
 }
 
-let promise = job(true);
+let promise4 = job(true);
 
-promise
-.then(function(data) {
+promise4
+  .then(function (data) {
     console.log(data);
 
     return job(false);
-})
+  })
 
-.catch(function(error) {
+  .catch(function (error) {
     console.log(error);
 
     return 'Error caught';
-})
+  })
 
-.then(function(data) {
+  .then(function (data) {
     console.log(data);
 
     return job(true);
-})
+  })
 
-.catch(function(error) {
+  .catch(function (error) {
     console.log(error);
-});
+  });
 
 
 // Question 6 : What is the Output?
 
 function job(state) {
-    return new Promise(function(resolve, reject) {
-        if (state) {
-            resolve('success');
-        } else {
-            reject('error');
-        }
-    });
+  return new Promise(function (resolve, reject) {
+    if (state) {
+      resolve('success');
+    } else {
+      reject('error');
+    }
+  });
 }
 
-let promise = job(true);
+let promise5 = job(true);
 
-promise
-.then(function(data) {
+promise5
+  .then(function (data) {
     console.log(data);
 
     return job(true);
-})
-.then(function(data) {
+  })
+  .then(function (data) {
     if (data !== 'victory') {
-        throw 'Defeat';
+      throw 'Defeat';
     }
     return job(true);
-})
-.then(function(data) {
+  })
+  .then(function (data) {
     console.log(data);
-})
-.catch(function(error) {
+  })
+  .catch(function (error) {
     console.log(error);
     return job(false);
-})
-.then(function(data) {
+  })
+  .then(function (data) {
     console.log(data);
     return job(true);
-})
-.catch(function(error) {
+  })
+  .catch(function (error) {
     console.log(error);
     return 'Error caught';
-})
-.then(function(data) {
+  })
+  .then(function (data) {
     console.log(data);
     return new Error('test'); // Not Returning a promise
-})
-.then(function(data) {
+  })
+  .then(function (data) {
     console.log('Success:', data.message);
-})
-.catch(function(data) {
+  })
+  .catch(function (data) {
     console.log('Error:', data.message);
-});
+  });
 
 
 // Question 7 : Promises Chaining
 
 const firstPromise = new Promise((resolve, reject) => {
-    resolve('First!');
+  resolve('First!');
 });
 
 const secondPromise = new Promise((resolve, reject) => {
-    resolve(firstPromise);
+  resolve(firstPromise);
 })
 
 secondPromise
-    .then(res => res)
-    .then(res => console.log(res));
+  .then(res => res)
+  .then(res => console.log(res));
 
 
 // Question 8 : Rewrite this example code using `async/await`
-    //  Instead of `.then/catch`
+//  Instead of `.then/catch`
 
 function loadJson(url) {
-        return fetch(url)
-          .then(response => {
-            if (response.status == 200) {
-              return response.json();
-            } else {
-              throw new Error(response.status);
-            }
-          });
+  return fetch(url)
+    .then(response => {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        throw new Error(response.status);
+      }
+    });
 }
-      
-loadJson('https://javascript.info/no-such-user.json').catch(alert); 
+
+loadJson('https://javascript.info/no-such-user.json').catch(alert);
 
 // Answer
 async function loadJson(url) { // (1)
-    let response = await fetch(url); // (2)
-  
-    if (response.status == 200) {
-      let json = await response.json(); // (3)
-      return json;
-    }
-  
-    throw new Error(response.status);
+  let response = await fetch(url); // (2)
+
+  if (response.status == 200) {
+    let json = await response.json(); // (3)
+    return json;
+  }
+
+  throw new Error(response.status);
 }
-  
-loadJson('https://javascript.info/no-such-user.json').catch(alert); 
+
+loadJson('https://javascript.info/no-such-user.json').catch(alert);
 
 
 // Question 9 : Solve Promise Recursively
 
 function importantAction(username) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(`Subscribe to ${username}`);
-      }, 1000);
-    });
-  }
-  
-  function likeTheVideo(video) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(`Like the ${video} video`);
-      }, 1000);
-    });
-  }
-  
-  function shareTheVideo(video) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(`Share the ${video} video`);
-      }, 1000);
-    });
-  }
-  
-  function promRecurse(funcPromises) {
-    if (funcPromises.length === 0) return;
-    const promi = funcPromises.shift();
-  
-    promi.then((result) => console.log(result)).catch((err) => console.log(err));
-  
-    promRecurse(funcPromises);
-  }
-  
-  promRecurse([
-    importantAction("Roadside Coder"),
-    likeTheVideo("Javascript Interview Questions"),
-    shareTheVideo("Javascript Interview Questions"),
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`hello to ${username}`);
+    }, 1000);
+  });
+}
+
+function likeTheVideo(video) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`Like the ${video} `);
+    }, 1000);
+  });
+}
+
+function shareTheVideo(video) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`Share the ${video} `);
+    }, 1000);
+  });
+}
+
+function promRecurse(funcPromises) {
+  if (funcPromises.length === 0) return;
+  const promi = funcPromises.shift();
+
+  promi.then((result) => console.log(result)).catch((err) => console.log(err));
+
+  promRecurse(funcPromises);
+}
+
+promRecurse([
+  importantAction("Akhil "),
+  likeTheVideo("Javascript Interview Questions"),
+  shareTheVideo("Javascript Interview Questions"),
 ]);
 
 
 // Question 10 : Promise Polyfill
 
 function PromisePolyFill(executor) {
-    let onResolve,
-        onReject,
-        fulfilled = false,
-        rejected = false,
-        called = false,
-        value;
-  
-    function resolve(v) {
-      fulfilled = true;
-      value = v;
-      
-      if (typeof onResolve === "function") { // for async
-        console.log("inside resolve")
-        onResolve(value);
-        called = true;
-      }
-    }
-  
-    function reject(reason) {
-      rejected = true;
-      value = reason;
-  
-      if (typeof onReject === "function") {
-        onReject(value);
-        called = true;
-      }
-    }
-  
-    this.then = function (callback) {
-      onResolve = callback;
-  
-      if (fulfilled && !called) { // for sync
-        console.log("inside then")
-        called = true;
-        onResolve(value);
-      }
-      return this;
-    };
-  
-    this.catch = function (callback) {
-      onReject = callback;
-  
-      if (rejected && !called) {
-        called = true;
-        onReject(value);
-      }
-      return this;
-    };
-  
-    try {
-      executor(resolve, reject);
-    } catch (error) {
-      reject(error);
+  let onResolve,
+    onReject,
+    fulfilled = false,
+    rejected = false,
+    called = false,
+    value;
+
+  function resolve(v) {
+    fulfilled = true;
+    value = v;
+
+    if (typeof onResolve === "function") { // for async
+      console.log("inside resolve")
+      onResolve(value);
+      called = true;
     }
   }
-  
-  const promise1 = new PromisePolyFill((resolve, reject) => {
-    console.log(1)
-    setTimeout(() => {
-        resolve(2)
-      }, 1000);
-    console.log(3)
-  })
-  
-  promise1.then(res => {
-    console.log(res)
+
+  function reject(reason) {
+    rejected = true;
+    value = reason;
+
+    if (typeof onReject === "function") {
+      onReject(value);
+      called = true;
+    }
+  }
+
+  this.then = function (callback) {
+    onResolve = callback;
+
+    if (fulfilled && !called) { // for sync
+      console.log("inside then")
+      called = true;
+      onResolve(value);
+    }
+    return this;
+  };
+
+  this.catch = function (callback) {
+    onReject = callback;
+
+    if (rejected && !called) {
+      called = true;
+      onReject(value);
+    }
+    return this;
+  };
+
+  try {
+    executor(resolve, reject);
+  } catch (error) {
+    reject(error);
+  }
+}
+
+const promise6 = new PromisePolyFill((resolve, reject) => {
+  console.log(1)
+  setTimeout(() => {
+    resolve(2)
+  }, 1000);
+  console.log(3)
+})
+
+promise6.then(res => {
+  console.log(res)
 });
 
-const examplePromise = new PromisePolyFill((resolve, reject) =>{
-    resolve(2);
+const examplePromise = new PromisePolyFill((resolve, reject) => {
+  resolve(2);
 });
 
 examplePromise.then((res) => console.log(res)).catch(err => console.error(err));
 
-PromisePolyFill.resolve = (val) => new PromisePolyFill(function executor(resolve, reject){
-    resolve(val);
+PromisePolyFill.resolve = (val) => new PromisePolyFill(function executor(resolve, reject) {
+  resolve(val);
 });
 
-PromisePolyFill.reject = (val) => new PromisePolyFill(function executor(resolve, reject){
-    reject(val);
+PromisePolyFill.reject = (val) => new PromisePolyFill(function executor(resolve, reject) {
+  reject(val);
 });
 
 
 // promise.all()
 
 PromisePolyFill.all = (promises) => {
-    let fulfilledPromises = [],
-      result = [];
-  
-    function executor(resolve, reject) {
-      promises.forEach((promise, index) =>
-        promise
-          .then((val) => {
-            fulfilledPromises.push(true);
-            result[index] = val;
-  
-            if (fulfilledPromises.length === promises.length) {
-              return resolve(result);
-            }
-          })
-          .catch((error) => {
-            return reject(error);
-          })
-      );
-    }
-    return new PromisePolyFill(executor);
+  let fulfilledPromises = [],
+    result = [];
+
+  function executor(resolve, reject) {
+    promises.forEach((promise, index) =>
+      promise
+        .then((val) => {
+          fulfilledPromises.push(true);
+          result[index] = val;
+
+          if (fulfilledPromises.length === promises.length) {
+            return resolve(result);
+          }
+        })
+        .catch((error) => {
+          return reject(error);
+        })
+    );
+  }
+  return new PromisePolyFill(executor);
 };
+
+Promise.polyfillAll = (promises) => {
+    result = [];
+  if (promises.length === 0) return resolve(result);
+  let count = promises.length;
+
+  promises.forEach((promise, index) =>
+    promise
+      .then((val) => {
+        result[index] = val;
+        count--
+        if (count === 0) {
+          return resolve(result);
+        }
+      })
+      .catch((error) => {
+        return reject(error);
+      })
+  );
+};
+
+
+Promise.polyfillAll([
+  importantAction("Akhil "),
+  likeTheVideo("Javascript Interview Questions"),
+  shareTheVideo("Javascript Interview Questions"),
+])

@@ -23,7 +23,7 @@ Question 8: Rewrite this example code using async/await
 Explanation: The code is already rewritten using async/await. It uses async function to define an asynchronous function and await to wait for the Promise to resolve.
 
 Question 9: Solve Promise Recursively
-Explanation: It will output "Subscribe to Roadside Coder", "Like the Javascript Interview Questions video", and finally "Share the Javascript Interview Questions video". The promRecurse function recursively processes each Promise in the array and logs the resolved value.
+Explanation: It will output "Hello to Akhil", "Like the Javascript Interview Questions video", and finally "Share the Javascript Interview Questions video". The promRecurse function recursively processes each Promise in the array and logs the resolved value.
 
 Question 10: Promise Polyfill
 Explanation: The Promise Polyfill is a custom implementation of the Promise class. It provides basic functionalities like then, catch, resolve, and reject. The example demonstrates how to create and use a Promise using the custom Polyfill.
