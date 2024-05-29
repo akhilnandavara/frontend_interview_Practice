@@ -185,9 +185,8 @@ let obj = {
   
   function deepClone(obj) {
     // Handle null and non-object types
-    if (obj === null || typeof obj != "object") {
-      return obj;
-    }
+    if (obj === null || typeof obj != "object") return obj
+     
   
     // Create a new object or array based on the type of the input object
     var clone = Array.isArray(obj) ? [] : {};
@@ -198,7 +197,6 @@ let obj = {
         clone[key] = deepClone(obj[key]);
       }
     }
-  
     return clone;
   }
   
@@ -213,3 +211,4 @@ let obj = {
   var clonedObj = deepClone(obj2);
   clonedObj.b.c = 3;
   
+

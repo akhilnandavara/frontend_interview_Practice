@@ -85,3 +85,93 @@ class Rectangle {
 // Answer: Inheritance in JavaScript classes is achieved using the extends keyword.
 // It allows a sub class(child class) to inherit properties and methods from a
 // super class (parent class).
+
+// Question 4 - What’s the Output?
+// class Employee {
+//    constructor() {
+//      this.name = "John";
+//    }
+//    constructor() {
+//      this.age = 30;
+//    }
+//  }
+
+//  var employeeObject = new Employee();
+
+// console.log(employeeObject.name);
+
+// Solution - Uncaught SyntaxError: A class may only have one constructor
+
+// Question 5 - Which approach is better and why?
+
+const jamesbond = {
+  firstName: "Akhil",
+  lastName: "Nandavar",
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`.trim();
+  },
+};
+
+jamesbond.getFullName();
+
+// or
+
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+
+Person.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`.trim();
+};
+
+const jamesBond = new Person("Akhil", "Nandavar");
+jamesBond.getFullName();
+
+// Solution -
+// Second approach is better since in the first approach, a closure is maintained
+// for each copy of the object containing getFullName method.While in the second approach,
+// the method is registered in the prototype rather than in every object.
+// Thus, it is a more memory efficient approach.
+
+// Question 6 - Implement this -
+
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+
+  add(num) {
+    this.result += num;
+    return this;
+  }
+
+  subtract(num) {
+    this.result -= num;
+    return this;
+  }
+
+  multiply(num) {
+    this.result *= num;
+    return this;
+  }
+
+  divide(num) {
+    if (num != 0) {
+      this.result /= num;
+    } else {
+      console.log("Cannot divite by 0");
+    }
+    return this;
+  }
+
+  getResult() {
+    return this.result;
+  }
+}
+
+const calc = new Calculator();
+const result = calc.add(10).subtract(5).multiply(2).divide(4).getResult();
+// console.log(result); // 2.5
