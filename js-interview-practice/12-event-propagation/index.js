@@ -102,3 +102,19 @@ button.addEventListener("click", function (event) {
 });
 
 
+// Question 7 : Create a Modal which closes by clicking on negative space
+
+const container = document.querySelector(".modalContainer");
+const modalButton = document.querySelector(".modalButton");
+
+modalButton.addEventListener("click", () => {
+  toggleModal(true);
+});
+
+function toggleModal(isVisble){
+  container.style.display=isVisble ? "block" : "none";
+}
+
+container.addEventListener("click", (e) => {
+  if (e.target === container) toggleModal(false);
+})
