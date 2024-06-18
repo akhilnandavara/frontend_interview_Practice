@@ -39,7 +39,7 @@ class Teacher {
 
 const codingClub1 = new Teacher("Akhil", "Coding Club");
 
-Inheritance
+// Inheritance
 class YouTubeTeacher extends Teacher {
   constructor(name, channel, likes, subscribers) {
     super(name, channel, likes);
