@@ -20,7 +20,7 @@ function App() {
       */}
       {/* 
       super - 
-        - Used inside the constructor to call the constructor of the parent class.
+        - Used inside the constructor to cal l the constructor of the parent class.
         - Ensures that the component's props are correctly initialized and available within 
         the component. 
       */}
@@ -44,7 +44,7 @@ function App() {
         Component and explain it.
       </h5>
       <DataList />
-      <DataListFn />
+      <DataListFn/>
     </div>
   );
 }
@@ -122,14 +122,14 @@ class DataList extends React.Component {
     }
 
     return (
-      <div>
+      <>
         <h3>Data List</h3>
         <ul>
           {data.splice(0, 6).map((item) => (
             <li key={item.id}>{item.title}</li>
           ))}
         </ul>
-      </div>
+      </>
     );
   }
 }
