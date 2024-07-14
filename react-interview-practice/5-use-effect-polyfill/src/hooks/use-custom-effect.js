@@ -10,12 +10,13 @@ export default function UseCustomEffect(cb, deps) {
         cb()
         oldDeps.current = deps
     }
+
     // if any depencies changed
     // const isDepsChanged= deps ? deps.some((dep,i)=>dep!==oldDeps.current[i]) :true
     const isDepsChanged = deps ? JSON.stringify(deps) !== JSON.stringify(oldDeps.current) : true
     if (isDepsChanged) {
         const cleanup = cb()
-        if (cleanup && typeof cleanup === 'function' && deps) {
+        if (cleanup && typeof cleanup === 'function' &&deps) {
             cleanup()
         }
     }
